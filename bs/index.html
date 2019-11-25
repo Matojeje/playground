@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- COMMON TAGS -->
+		<meta charset="utf-8">
+		<title>Skládáme sinusovky</title>
+		<!-- Search Engine -->
+		<meta name="description" content="Obdélník a trojúhelník + Google odkaz">
+		<meta name="image" content="https://matojeje.github.io/web/bs/preview.png">
+		<!-- Schema.org for Google -->
+		<meta itemprop="name" content="Skládáme sinusovky">
+		<meta itemprop="description" content="Obdélník a trojúhelník + Google odkaz">
+		<meta itemprop="image" content="https://matojeje.github.io/web/bs/preview.png">
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="Skládáme sinusovky">
+		<meta name="twitter:description" content="Obdélník a trojúhelník + Google odkaz">
+		<meta name="twitter:image:src" content="https://matojeje.github.io/web/bs/preview.png">
+		<meta name="twitter:player" content="https://matojeje.github.io/web/bs/index.html">
+		<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+		<meta name="og:title" content="Skládáme sinusovky">
+		<meta name="og:description" content="Obdélník a trojúhelník + Google odkaz">
+		<meta name="og:image" content="https://matojeje.github.io/web/bs/preview.png">
+		<meta name="og:url" content="https://matojeje.github.io/web/bs">
+		<meta name="og:site_name" content="Skládáme sinusovky">
+		<meta name="og:locale" content="cs_CZ">
+		<meta name="og:type" content="website">
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/>
+	</head>
+
+	<body onload=M.AutoInit()>
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col s12">
+					<h5>Skládání harmonických vln</h5>
+					<p>Vytvoří odkaz na Google graf.</p>
+				</div>
+			</div>
+
+			<div class="divider"></div>
+			<div class="section"></div>
+
+			<div class="row">
+
+				<div class="col s12 m6 l3">
+					<div class="input-field">
+						<i class="material-icons prefix">show_chart</i>
+						<select id="t">
+							<option selected value="triangle">Trojúhelník</option>
+							<option value="square">Obdélník</option>
+						</select>
+						<label>Typ</label>
+					</div>
+				</div>
+				
+				<div class="col s12 m6 l4">
+					<div class="input-field">
+						<i class="material-icons prefix">format_list_numbered</i>
+						<input oninput="hint()" id="n" type="number" class="validate" value=1 min=1 max=30 step=1>
+						<label for="n">Číslo v třídní knize&nbsp;
+							<i class="small circle waves-effect waves-dark material-icons" onclick="showHint()">info</i>
+						</label>
+						<span hidden class="badge" id="h"></span>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div class="col s12">
+					<a onclick=go() class="hoverable waves-effect waves-light pink btn">Přejít na Google</a>
+					<p>Poznámka: limit 32 slov neovlivňuje grafování, jenom vyhledávání.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script>
+
+			function go() { updateURL(), window.location = u }
+
+			function showHint() { hint(), document.querySelector("#h").hidden = false }
+
+			function hint() {
+				document.querySelector("#h").innerHTML =
+				parseInt(document.querySelector("#n").value) % 2 === 0
+				? "Sudé pořadí → trojúhelník"
+				: "Liché pořadí → obdélník"
+			}
+
+			function updateURL() {
+				n = document.querySelector("#n").value
+				u = "https://www.google.com/search?q=" + (document.querySelector("#t").value == "triangle"
+
+					? `y+%3D+sin(2pi*${n}x)-sin(2pi*${n}x*3)%2F3^2%2C+y+%3D+sin(2pi*${n}x)-sin(2pi*${n}x*3)%2F3^2%2Bsin(2pi*${n}x*5)%2F25-sin(2pi*${n}x*7)%2F49%2C+y+%3D+sin(2pi*${n}x)-sin(2pi*${n}x*3)%2F3^2%2Bsin(2pi*${n}x*5)%2F25-sin(2pi*${n}x*7)%2F49%2Bsin(2pi*${n}x*9)%2F81-sin(2pi*${n}x*11)%2F121`
+					// y = sin(2pi*nx)-sin(2pi*nx*3)/3^2, y = sin(2pi*nx)-sin(2pi*nx*3)/3^2+sin(2pi*nx*5)/25-sin(2pi*nx*7)/49, y = sin(2pi*nx)-sin(2pi*nx*3)/3^2+sin(2pi*nx*5)/25-sin(2pi*nx*7)/49+sin(2pi*nx*9)/81-sin(2pi*nx*11)/121
+
+					: `y+%3D+sin(2pi*${n}x)%2Bsin(2pi*${n}x*3)%2F3%2C+y+%3D+sin(2pi*${n}x)%2Bsin(2pi*${n}x*3)%2F3%2Bsin(2pi*${n}x*5)%2F5%2Bsin(2pi*${n}x*7)%2F7%2C+y+%3D+sin(2pi*${n}x)%2Bsin(2pi*${n}x*3)%2F3%2Bsin(2pi*${n}x*5)%2F5%2Bsin(2pi*${n}x*7)%2F7%2Bsin(2pi*${n}x*9)%2F9%2Bsin(2pi*${n}x*11)%2F11`)
+					// y = sin(2pi*nx)+sin(2pi*nx*3)/3, y = sin(2pi*nx)+sin(2pi*nx*3)/3+sin(2pi*nx*5)/5+sin(2pi*nx*7)/7, y = sin(2pi*nx)+sin(2pi*nx*3)/3+sin(2pi*nx*5)/5+sin(2pi*nx*7)/7+sin(2pi*nx*9)/9+sin(2pi*nx*11)/11
+			}
+
+		</script>
+	</body>
+</html>
