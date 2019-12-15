@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="materialbox.css">
+	<title>Playground</title>
+	<style>
+		.disabled {
+			cursor: not-allowed;
+		}
+		.btn-outline-primary > * {
+			fill: #007bff;
+		}
+		.btn-outline-primary:hover > * {
+			fill: #fff;
+		}
+		.btn-ic {
+			transition: fill .15s ease-in-out;
+			vertical-align: -15%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3 class="pt-4"><a href="https://matojeje.github.io/playground/">Playground</a></h3>
+		<p>A place for my tiny web projects. <small class="text-muted">Click on pictures to zoom!</small></p>
+
+		<h4 class="mb-3">2019</h4>
+
+		<ul class="list-unstyled">
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/bs.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">26. 11. 2019</p>
+					<h5 class="mt-0 mb-1">Google wave graphing</h5>
+					<p class="mb-3">To help my classmates with a homework, I quickly made this thing that generates a link to a Google search. The graph view there shows how to a triangle or sawtooth wave can be made from certain octaves of a sine wave.</p>
+					<a href="bs/" class="btn btn-sm btn-outline-primary disabled" tabindex="-1" aria-disabled="true">English</a>
+					<a href="bs/" class="btn btn-sm btn-outline-primary">Czech</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/enterless.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">21. 8. 2019</p>
+					<h5 class="mt-0 mb-1">Enterless</h5>
+					<p class="mb-3">A tiny utility that converts newlines to <code>\n</code>.</p>
+					<a href="enterless/" class="btn btn-sm btn-outline-primary">Open</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/launchpad.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">17. 8. 2019</p>
+					<h5 class="mt-0 mb-1">Launchpad animations</h5>
+					<p class="mb-3">Lights up buttons on your launchpad using <a href="https://github.com/LostInBrittany/launchpad-webmidi">Launchpad WebMIDI</a>! It can display a variety of patterns on the launchpad's 9×9 16 color display, including a customizable analog clock.</p><p>Compatible with Chrome + Novation Launchpad Mini MK1. Please plug it in before opening the webpage. I'm very proud of this one!</p>
+					<a href="launchpad/" class="btn btn-sm btn-outline-primary">Open</a>
+					<a href="https://www.youtube.com/watch?v=vkWm9m-y1xg" class="btn btn-sm btn-outline-primary"><svg class="btn-ic mr-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="16" viewBox="2 4 20 16"><path d="M21,5c0,0-3-1-9-1S3,5,3,5s-1,3-1,7s1,7,1,7s3,1,9,1s9-1,9-1s1-3,1-7S21,5,21,5z M10,15.464V8.536L16,12L10,15.464z"></path></svg> Watch in action</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<div class="d-flex flex-column">
+					<img src="images/smm1.png" class="mr-3 border materialboxed mb-1" width=200 alt="Webpage screenshot" data-caption="Song selection screen">
+					<img src="images/smm2.png" class="mr-3 border materialboxed mt-1" width=200 alt="Webpage screenshot" data-caption="Mixing deck">
+				</div>
+				<div class="media-body h-100">
+					<p class="text-muted float-right">16. 7. 2019</p>
+					<h5 class="mt-0 mb-1">Super Mario Mixer</h5>
+					<p class="mb-3"><em>Work in progress.</em> You can make your own arrangements of the level editor music from Super Mario Maker in this mixing deck webapp! There are 7 mixer tracks for each combination of the 4 games and 6 themes.</p><p>The webapp uses a fork of <a href="https://github.com/patrick99e99/howler.js/tree/loop_control">howler.js</a>, <a href="https://github.com/Dlom/favicon.js">favicon.js</a> and <a href="https://materializecss.com/">Materialize</a>. The playback, mixing and panning already works, but I don't have the loop points yet and I have to finish drawing the instrument icons. Also, I'm not sure where to host the music...</p>
+					<a href="enterless/" class="btn btn-sm btn-outline-primary disabled" tabindex="-1" aria-disabled="true">Coming soon</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/sliderwave.gif" class="mr-3 border" width=200 alt="Animation of sliders making a sine wave">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">27. 6. 2019</p>
+					<h5 class="mt-0 mb-1">Slider wave</h5>
+					<p class="mb-3">A little web toy that makes input sliders move together in a sine wave like fashion, complete with some customization!</p>
+					<a href="sliderwave/" class="btn btn-sm btn-outline-primary">English</a>
+					<a href="sliderwave/index_cz.html" class="btn btn-sm btn-outline-primary">Czech</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/e12.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">20. 6. 2019</p>
+					<h5 class="mt-0 mb-1">Preffered numbers</h5>
+					<div class="mb-3">Calculates numbers in an E series of any length (like E12 or E24).<br>
+					<small class="text-muted">Some of the calculated values don't match with the official ones which were already being manufactured before the standards were established.</small></div>
+					<a href="e12/" class="btn btn-sm btn-outline-primary disabled" tabindex="-1" aria-disabled="true">English</a>
+					<a href="e12/" class="btn btn-sm btn-outline-primary">Czech</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/time.png" class="mr-3 border" width=200 alt="18:37:01">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">22. 3. 2019</p>
+					<h5 class="mt-0 mb-1">Time</h5>
+					<p class="mb-3">Just a digital clock, that's it! Frustrated with trying to clean up <a href="https://time.is/just/">time.is/just</a> in OBS, I wrote my own.</p>
+					<a href="time/" class="btn btn-sm btn-outline-primary">Open</a>
+				</div>
+			</li>
+			
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/mello.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">13. 2. 2019</p>
+					<h5 class="mt-0 mb-1">Cookie clicker</h5>
+					<p class="mb-3">A simple (and very unbalanced) cookie clicker clone that I wrote for a buddy to teach them some JavaScript basics! Actually, it looks pretty similar to Candy box.</p>
+					<a href="mello/" class="btn btn-sm btn-outline-primary">Open</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/numbers.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">12. 1. 2019</p>
+					<h5 class="mt-0 mb-1">Look-and-say</h5>
+					<p class="mb-3"><em>Unfinished</em> sequence generator. I'll fix it later...</p>
+					<a href="numbers/numbers.html" class="btn btn-sm btn-outline-secondary">Open</a>
+				</div>
+			</li>
+
+			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
+				<img src="images/canvas.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<div class="media-body h-100">
+					<p class="text-muted float-right">5. 1. 2019</p>
+					<h5 class="mt-0 mb-1">Canvas test!</h5>
+					<p class="mb-3">Trying out canvas functions! No framework.</p>
+					<a href="canvas/canvas.html" class="btn btn-sm btn-outline-primary">Open</a>
+				</div>
+			</li>
+
+		</ul>
+
+		<!-- <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4">
+
+			<div class="col mb-4">
+				<div class="card h-100">
+					<img src="images/sliderwave.gif" class="card-img-top" alt="Animation of sliders">
+					<div class="card-body">
+						<h5 class="card-title">Sliderwave</h5>
+						<p class="card-text">Makes sliders move in a sine wave with some customization!</p>
+					</div>
+					<div class="card-footer text-muted">
+						<a href="sliderwave" class="card-link">English</a>
+						<a href="sliderwave/index_cz.html" class="card-link">Czech</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col mb-4">
+				<div class="card h-100">
+					<img src="images/enterless.png" class="card-img-top" alt="Screenshot of enterless">
+					<div class="card-body">
+						<h5 class="card-title">Enterless</h5>
+						<p class="card-text">Converts newlines to <code>\n</code>.</p>
+					</div>
+					<div class="card-footer text-muted">
+						<a href="enterless" class="card-link">English</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col mb-4">
+				<div class="card h-100">
+					<img src="images/enterless.png" class="card-img-top" alt="Screenshot of enterless">
+					<div class="card-body">
+						<h5 class="card-title">Enterless</h5>
+						<p class="card-text">Converts newlines to <code>\n</code>.</p>
+					</div>
+					<div class="card-footer text-muted">
+						<a href="enterless" class="card-link">English</a>
+					</div>
+				</div>
+			</div>
+
+		</div> -->
+			
+	</div>
+
+	<footer class="footer mt-auto py-3 bg-light">
+		<div class="container text-muted d-flex">
+			<span class="mr-auto">By <a href="https://github.com/Matojeje">Mato</a>. <small>Last updated 15. 12. 2019</small></span>
+			<span>Using
+				<a href="https://getbootstrap.com/">Bootstrap</a>,
+				<a href="https://www.bryanbraun.com/anchorjs/">AnchorJS</a> and
+				<a href="https://materializecss.com/">Materialize</a> (
+				<a href="https://materializecss.com/media.html#materialbox">Material Box component</a>)
+			</span>
+		</div>
+	</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js" integrity="sha256-E4RlfxwyJVmkkk0szw7LYJxuPlp6evtPSBDlWHsYYL8=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" integrity="sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			anchors.options = {icon: '#'};
+			anchors.add('h4');
+			anchors.add('h5');
+			M.AutoInit();
+		});
+	</script>
+</body>
+</html>

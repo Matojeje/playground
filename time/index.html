@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Clock</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body {
+		background-color: rgba(0,0,0,0);
+		font-family: 'Century Gothic', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		font-variant-numeric: tabular-nums;
+		font-size: 36pt;
+		color: white;
+		text-shadow: 0px 2px 5px black; 
+	}
+	</style>
+</head>
+<body>
+	<div id="time">JavaScript isn't supported.</div>
+	<script>
+		function tick() {
+			d = new Date
+			document.getElementById("time").innerHTML =  d.toLocaleTimeString()
+		}
+	
+		window.onload = tick
+		var updater = window.setInterval(tick, 60);
+	</script>
+</body>
+</html>

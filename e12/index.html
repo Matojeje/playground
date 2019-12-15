@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script type="text/javascript" src="index.js"></script>
+	<title>Řady vyvolených čísel</title>
+	<style>
+		* {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Řady vyvolených čísel</h1>
+	<form>
+		E <input type="number" id="count" defaultValue=12 oninput="writeCalc()">
+		<br>
+		Desetinných míst:
+		<input type="number" id="decimal" defaultValue=1 oninput="writeCalc()" min=0 max=20>
+	</form>
+	<br>
+	<pre id="out"></pre>
+</body>
+
+</html>

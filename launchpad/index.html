@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Launchpad</title>
+	<script src="launchpad-webmidi.js"></script>
+	<script src="button-list.js"></script>
+	<script src="bresenham.js"></script>
+	<script src="index.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<h1>Launchpad animations!</h1>
+	<img class="mat" src="baseline-settings_input_svideo-24px.svg">
+	<b>Midi:</b> <span id="midi_state"></span><br>
+
+	<form name="settings" onchange="updateSettings()" style="margin-top: 3px;">
+		<label for="scene">
+			<img class="mat" src="baseline-gradient-24px.svg">
+			<h2>Scene:</h2>
+		</label>
+		<select id="scene" onchange="console.log('Switching to ' + scene.value);">
+
+			<optgroup label="Colors">
+				<option>Black</option>
+				<option>Red</option>
+				<option>Amber</option>
+				<option>Yellow</option>
+				<option>Green</option>
+			</optgroup>
+			<optgroup label="Simple stuff">
+				<option>Random dots</option>
+				<option>Checkerboard</option>
+				<option>Snake check</option>
+			</optgroup>
+			<optgroup label="Advanced stuff">
+				<option>Analog clock</option>
+			</optgroup>
+
+		</select>
+		<br>
+		<h2>
+			<img class="mat" src="baseline-tune-24px.svg">
+			Options:</h2><br>
+		<div class="options" style="margin-top: 10px;">
+
+			<fieldset>
+				<legend class="global">Global</legend>
+				<div>
+					<label for="fps">FPS</label>
+					<input id="fps" type="number" min=0 max=300 value=60></input>
+				</div>
+				<u onclick="wipePad(true)">Clear launchpad</u>
+			</fieldset>
+
+			<fieldset>
+				<legend>Random dots</legend>
+				<div>
+					<input type="checkbox" id="rnd_anim" checked>
+					<label for="rnd_anim">Animate</label>
+				</div>
+				<div>
+					<input type="checkbox" id="rnd_matrix">
+					<label for="rnd_matrix">Use green (Matrix style) palette</label>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>Checkerboard</legend>
+				<div class="option">
+					<label for="chk_inv">Invert</label>
+					<input type="checkbox" id="chk_inv">
+				</div>
+				<div class="option">
+					<label for="chk_color">Color</label>
+					<select id="chk_color">
+						<option value="red">Red</option>
+						<option value="amber" selected>Amber</option>
+						<option value="yellow">Yellow</option>
+						<option value="green">Green</option>
+					</select>
+				</div>
+				<div class="option">
+					<label for="chk_level">Brightness</label>
+					<input id="chk_level" type="range" min=1 max=3 step=1 value=3 list="3">
+					<datalist id="3">
+						<option value=1>
+						<option value=2>
+						<option value=3>
+					</datalist>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>Analog clock</legend>
+				<table width=100%>
+					<tbody>
+						<tr>
+							<td>
+								<fieldset class="secondary midnight-city">
+									<legend>Preview</legend>
+									<canvas width=9 height=9 id="clock" class="launchpad"></canvas>
+								</fieldset>
+							</td>
+							<td>
+								<fieldset class="secondary">
+									<legend>Color settings</legend>
+									<div class="option">
+										<label for="aclk_1">Hour hand</label>
+										<select id="aclk_1">
+											<option value="off">Off</option>
+											<option value="red">Red</option>
+											<option value="amber">Amber</option>
+											<option value="yellow">Yellow</option>
+											<option value="green" selected>Green</option>
+										</select>
+									</div>
+									<div class="option">
+										<label for="aclk_2">Minute hand</label>
+										<select id="aclk_2">
+											<option value="off">Off</option>
+											<option value="red">Red</option>
+											<option value="amber" selected>Amber</option>
+											<option value="yellow">Yellow</option>
+											<option value="green">Green</option>
+										</select>
+									</div>
+									<div class="option">
+										<label for="aclk_3">Second hand</label>
+										<select id="aclk_3">
+											<option value="off">Off</option>
+											<option value="red" selected>Red</option>
+											<option value="amber">Amber</option>
+											<option value="yellow">Yellow</option>
+											<option value="green">Green</option>
+										</select>
+									</div>
+									<div class="option">
+										<label for="aclk_d">Dots</label>
+										<select id="aclk_d">
+											<option value="off" selected>Off</option>
+											<option value="red">Red</option>
+											<option value="amber">Amber</option>
+											<option value="yellow">Yellow</option>
+											<option value="green">Green</option>
+										</select>
+									</div>
+								</fieldset>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table width=100%>
+					<tbody>
+						<tr>
+							<td>
+								<div>
+									<input type="checkbox" id="aclk_face" checked>
+									<label for="aclk_face">Draw clock face</label>
+								</div>
+								<div>
+									<input type="checkbox" id="aclk_dots">
+									<label for="aclk_dots">Draw dots over hands</label>
+								</div>
+							</td>
+							<td>
+								<div class="center">
+									<label for="aclk_spin">Rotation:</label><br>
+									<input min=-180 max=180 step=10 type="range" id="aclk_spin" list="stops">
+									<datalist id="stops">
+										<option value="-180" label="-180°">
+										<option value="-90">
+										<option value="0" label="0°">
+										<option value="90">
+										<option value="180" label="180°">
+									</datalist>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<span id="time" class="center counter"></span>
+			</fieldset>
+		</div>
+	</form>
+</body>
+
+</html>

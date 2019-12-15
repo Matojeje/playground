@@ -1,0 +1,120 @@
+<!-- By Mato | 1/2019 | v2 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Canvas test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Exo+2|Ubuntu+Mono&amp;subset=latin-ext" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+	<!-- <script src="canvas.js"></script> -->
+</head>
+
+<body style="margin: 8px">
+	<input type="text" id="text" autocomplete="off" onclick="textboxclicked = true">
+	<br>
+	<canvas id="canvas" width=400 height=240 style="border:1px solid rgba(0, 0, 0, 0.5); margin-top: 8px;">
+		<!-- <img src="https://i.imgur.com/qrhLNWJ.gif"> -->
+	</canvas>
+
+	
+	<script>
+
+		// Load our canvas
+		var context = document.getElementById("canvas").getContext("2d");
+
+		// Set initial variables
+		start = new Date() // for animated sine wave later
+		textboxclicked = false;
+		text = "↑ Input text above";
+		fps = 60;
+		trail = 20;
+
+		// Draw something every frame!
+		setInterval(draw, 1000/fps);
+
+		// Our main loop is defined in this function
+		function draw() {
+
+			// First clear the canvas
+			clear();
+
+
+			/* [ Drawing text ] */
+			// 1. Show textbox's text (only) after the textbox is clicked
+			if (textboxclicked) {
+				text = document.getElementById("text").value
+			}
+
+			// 2. Draw the text
+			context.font = "30px 'Exo 2', sans-serif";
+			context.fillStyle = "black";
+			context.fillText(text, 10, 50);
+		
+
+			/* [ Drawing text trails ] */
+			for (let i = 0; i < trail; i++) {
+				context.fillStyle = "rgba(0, 0, 0, " + (0.5-(i/trail))/((trail/10)*3) + ")";
+				context.fillText(text, 10+i/2, 50+i/2);
+			}
+
+
+			/* [ Drawing the sine wave ] */
+			// I'd like to have a square moving up and down every 3 pixels
+			for (let x = 0; x < canvas.width/3; x++) {
+				// Draw the background rectangles first
+				context.fillStyle = "rgba(0, 0, 0, 0.05)";
+				context.fillRect(x*3,190,2,20);
+
+				// Let's see how much time elapsed since the page loaded
+				// D stands for Difference or Delta
+				d = start.getTime() - new Date().getTime()
+
+				// Hue goes full circle from the left edge to the right edge, making a rainbow
+				context.fillStyle = `hsl(${ ( x / canvas.width / 3 ) * 360 * 10},50%,50%)`;
+
+				// Draw the tiny squares that make up the sine wave
+				context.fillRect(
+					x*3,
+					Math.sin( (50*x+d) / (100*Math.PI) ) * 10 + 200,
+					//											↑ Offset
+					//									   ↑ Amplitude
+
+					2,2);
+			}
+			
+			/* [ Drawing the pixel box ] */
+			for (let x = 0; x < Math.ceil(canvas.width/5); x++) {
+				for (let y = 0; y < 2; y++) {
+					context.fillStyle = `rgba(0, 0, 0, ${Math.random()})`;
+					context.fillRect(x*5,(y*5)+230,5,1.2);
+				}
+			}
+
+			/* [ Drawing time ] */
+			now = new Date()
+			context.fillStyle = "rgba(0,0,0,0.75)";
+
+			context.font = "18px 'Ubuntu Mono', monospace";
+			context.fillText(now.toLocaleString(), 15, 180);
+		}
+
+		// Clears the canvas
+		function clear() {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+
+		// Debug: Logs the canvas resolution (press F12 to view)
+		console.log("Width: " + canvas.width + " px")
+		console.log("Height: " + canvas.height + " px")
+		
+		/* Alternatives to this:
+			a. Array:	console.log([canvas.width, canvas.height])
+			b. Object:	console.log({width:canvas.width, height:canvas.height})
+		*/
+
+	</script>
+</body>
+</html>

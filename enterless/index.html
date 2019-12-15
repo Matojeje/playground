@@ -1,0 +1,56 @@
+<html>
+
+<head>
+	<title>Enterless</title>
+</head>
+
+<body>
+	Converts newlines to \n for javascript squishing<br>
+	Press Shift+C to copy result
+	<div style="display: flex; width: 100%; margin-top: 10px">
+		<textarea style="min-width: 250px" id="input" oninput="update()"></textarea>
+		<div id="output" style="border: 1px solid #ddd; font-family: monospace">output</div>
+	</div>
+	<script>
+		// https://medium.com/p/763ca19beb9e
+		document.onkeyup = function (e) {
+			if (e.shiftKey && (e.which || e.keyCode) == 67 && o) copyToClp(o)
+		}
+
+		// https://stackoverflow.com/a/51126086
+		function copyToClp(txt) {
+			txt = document.createTextNode(txt);
+			var m = document;
+			var w = window;
+			var b = m.body;
+			b.appendChild(txt);
+			if (b.createTextRange) {
+				var d = b.createTextRange();
+				d.moveToElementText(txt);
+				d.select();
+				m.execCommand('copy');
+			} else {
+				var d = m.createRange();
+				var g = w.getSelection;
+				d.selectNodeContents(txt);
+				g().removeAllRanges();
+				g().addRange(d);
+				m.execCommand('copy');
+				g().removeAllRanges();
+			}
+			txt.remove();
+		}
+
+		function escapeNewlines(t) {
+			return t.replace(/\n/g, "\\n");
+		}
+
+		function update() {
+			i = document.getElementById("input").value;
+			o = escapeNewlines(i);
+			document.getElementById("output").innerText = o;
+		}
+	</script>
+</body>
+
+</html>

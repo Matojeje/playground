@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	
+	<style>
+		.container {margin-top:2em}
+		#mono {font-family: 'Ubuntu Mono', 'Consolas', monospace; border: 1px solid rgba(0,0,0,0.7); padding:1em}
+		.control {margin-top:2px}
+		/*label {text-align: right}*/
+	</style>
+  </head>
+  <body>
+
+	<div class="container">
+		<h1 style="font-size: 2rem">Look and say number sequence</h1>
+		<br>
+		<div class="row">
+			<div class="col-sm-4">
+				<h4>Settings</h4>
+				<form>
+					<div class="row control">
+						<label for="p" class="col-sm-6">Starting number</label>
+						<input class="col-sm-5" type="number" min=1 step=1 id="p" value=1>
+					</div>
+					<div class="row control">
+						<label for="n" class="col-sm-6">Iterations</label>
+						<input class="col-sm-5" type="number" min=2 step=1 id="n" value=7>
+					</div>
+				</form>
+				<button onclick="update(p.value,n.value)">Let's go!</button>
+			</div>
+			<div class="col">
+				<h4>Output</h4>
+				<div id="mono"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="numbers.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
