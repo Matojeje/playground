@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Minesweeper test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="margin:2em;font-family:sans-serif;font-size:10pt;background-color:#F7F7F7">
+    <!--By Mato-->
+	Mines: <input type="number" id="mines"><br>
+	Width: <input type="number" id="width"><br>
+	Height: <input type="number" id="height"><br>
+	<input type="checkbox" id="hide"><label for="hide">Hidden</label><br>
+
+	<button onclick="calculate(
+		parseInt(document.getElementById('mines').value),
+		parseInt(document.getElementById('width').value),
+		parseInt(document.getElementById('height').value),
+				 document.getElementById('hide').checked,
+				 document.getElementById('output')
+		)">Go!</button><br>
+	<br>
+	Output: <br>
+	<!-- <textarea style="display:none;">Bodge</textarea>
+	<textarea id="output">Initial</textarea> -->
+	<div><code id="output">Initial</code></div>
+	<script>
+		function calculate(mines,width,height,hide,out) {
+			field = new Array(height).fill(0).map(() => new Array(width).fill(0));
+			//console.dir(field);
+			console.clear();
+			if (mines >= width*height) {
+				em = `There are too many mines! (${mines} mines, but ${width*height-1} max)`
+				throw Error(em)
+				console.error(em)
+				return(em);
+			} else {
+				i = 0;
+				while (i < mines) {
+					rnW = Math.trunc(Math.random()*width);
+					rnH = Math.trunc(Math.random()*height);
+					if (field[rnW][rnH] == 0) {
+						field[rnW][rnH] = 100
+						console.log("Mine " + i + " added at " + rnW + "," + rnH);
+						i++;
+					}
+				}
+				//console.dir(field);
+				for (let i = 0; i < field.length; i++) {
+					for (let j = 0; j < field[i].length; j++) {
+						around(j,i,width,height,field);
+					}
+				}
+				output = "";
+				for (let i = 0; i < field.length; i++) {
+					for (let j = 0; j < field[i].length; j++) {
+						output += field[i][j] + "\t"
+					}
+					output += "<br>"
+				}
+				if (hide) {h = "||"} else {h = ""};
+				output = output.replace(/10\S/g,h + ":boom:" + h)
+				emojis = {"0":":zero:","1":":one:","2":":two:","3":":three:","4":":four:","5":":five:","6":":six:","7":":seven:","8":":eight:"};
+				for (let i = 0; i <= 8; i++) {
+					output = output.replace(new RegExp(`${i.toString()}`,"g"),h + emojis[i] + h)
+				}
+				output = output.replace(/\t/g,"")
+				out.innerHTML = output
+				//out.cols = width * 8
+				//out.rows = height - 1
+				console.log("Using " + output.length + " characters.")
+				if (output.length >= 2000) {
+					em = `The message is too long! (Using ${output.length} out of 2000 characters)`
+					throw Error(em)
+					console.error(em)
+					return(em);
+				} else {
+					return(output)
+				}
+			}
+		}
+
+		/*	
+			(a) x > 0						(b) x < width
+			[x-1][y-1]		[x  ][y-1]		[x+1][y-1]		(c) y > 0
+			[x-1][y  ]		[x  ][y  ]		[x+1][y  ]
+			[x-1][y+1]		[x  ][y+1]		[x+1][y+1]		(d) y < height
+			
+		*/
+
+		function around(x,y,w,h,f) {
+			const a = (x > 0)
+			const b = (x < w-1)
+			const c = (y > 0)
+			const d = (y < h-1)
+			var e = [x,y]
+			//if (true /*h >= w*/) {
+				if (a && c){check(f[x-1][y-1],e,f)}
+				if (a) {	check(f[x-1][y  ],e,f)}
+				if (a && d){check(f[x-1][y+1],e,f)}
+				if (b && c){check(f[x+1][y-1],e,f)}
+				if (b) {	check(f[x+1][y],e,f)}
+				if (b && d){check(f[x+1][y+1],e,f)}
+				if (c) {	check(f[x  ][y-1],e,f)}
+				if (d) {	check(f[x  ][y+1],e,f)}
+			//}
+		}
+
+		function check(g,e,f) {
+			if (g > 50) { // Bodge
+				f[e[0]][e[1]]++
+			}
+		}
+	</script>
+</body>
+</html>
