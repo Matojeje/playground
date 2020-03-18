@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AHK to Regex</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body onload="setup()">
+	<div class="container">
+		<p>This thingy converts certain kinds of <a href="https://www.autohotkey.com/docs/Hotstrings.htm">
+		Hotstrings</a> from <abbr title="AutoHotkey">AHK</abbr> to JavaScript string functions.</p>
+		<form class="grid">
+			<label for="input"><b>Input</b></label>
+			<label for="output"><b>Output</b></label>
+			<textarea class="code" rows=10 id="input" autocomplete="off" required>
+; Example!
+::hey::hai
+:*:multi::muwtee
+:*?:ll::ww
+:*?:rr::ww</textarea>
+			<textarea class="code" rows=10 id="output" readonly>
+Please enable JavaScript for this to work!</textarea>
+			<button type="button" onclick="convert()">Convert</button>
+			<button type="button" id="copybutton" data-clipboard-target="#output">Copy</button>
+			<div style="margin: auto;">
+				<input  id="functionWrap" type="checkbox" checked onclick="convert()">
+				<label for="functionWrap">Wrap output code in a function</label>
+				<br>
+				<input  id="comments" type="checkbox" onclick="convert()">
+				<label for="comments">Include invalid input as comments</label>
+			</div>
+		</form>
+		<div>
+			<p>Supported AHK syntax with explanation:</p>
+			<div class="explain">
+				<code>::abc::</code><span>"abc" with word boundary on both sides</span>
+				<code>:*:abc::</code><span>"abc" with word boundary at the start</span>
+				<code>:*?:abc::</code><span>"abc" with no word boundary required</span>
+			</div>
+		</div>
+	</div>
+	<img class="uwu" alt="uwu" title="uwu" src="..\images\uwu.png">
+
+	<script src="index.js"></script>
+	<script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+</body>
+</html>
