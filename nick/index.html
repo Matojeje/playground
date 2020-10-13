@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Máš rád obskurní jména kombinovaná s přídavnými jmény a aliterace? Jsi na správném místě.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Generátor</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet"> 
     <style>
         #nadpis {
             font-family: 'Work Sans', 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 200;
-            font-size: 5vmax;
-            transition: 100ms ease-out filter;
+            font-size: 3.8vmax;
+            transition: 100ms linear filter;
         }
 
         #nadpis:active {
@@ -42,7 +45,7 @@
             user-select: none;
         }
 
-        img#copy {
+        /* img#copy {
             margin-left: 2rem;
             vertical-align: 100%;
             transform: scale(3);
@@ -67,13 +70,24 @@
             opacity: 0.5 !important;
             filter: invert(23%) sepia(52%) saturate(4547%) hue-rotate(261deg) brightness(79%) contrast(105%);
             transform: translateY(1px) scale(3);
+        } */
+
+        .darkmode-toggle--white {
+            transform: scale(0.4);
+            opacity: 0.2;
+            transition: transform ease-in 60ms, opacity linear 1s;
+        }
+
+        .darkmode-toggle--white:hover {
+            transform: scale(1);
+            opacity: 1;
         }
     </style>
 </head>
 
 <body>
     <div id="obsah">
-        <span id="nadpis" onclick="run()">Zapni si JavaScript debílku</span>
+        <span id="nadpis" onclick="run()">Klikni sem</span>
         <!-- <img id="copy" src="copy.svg" data-clipboard-target="#nadpis"> -->
     </div>
 
@@ -81,6 +95,7 @@
     <script src="slova.js"></script>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
     <script>
 
@@ -98,6 +113,10 @@
         function velké(text) { return text[0].toUpperCase() + text.slice(1) }
         
         /* new ClipboardJS("img#copy"); */
+        function addDarkmodeWidget() {
+            new Darkmode().showWidget({saveInCookies: false});
+        }
+        window.addEventListener('load', addDarkmodeWidget);
         
         run()
 
