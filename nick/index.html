@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generátor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet"> 
+    <style>
+        #nadpis {
+            font-family: 'Work Sans', 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 200;
+            font-size: 5vmax;
+            transition: 100ms ease-out filter;
+        }
+
+        #nadpis:active {
+            filter: opacity(0.0) blur(1px);
+        }
+        
+        #nadpis::selection {
+            color: blue;
+            background: unset;
+        }
+
+        #obsah {
+            transition: 200ms ease-out transform;
+        }
+
+        /* #obsah:hover {
+            transform: scale(1.1);
+        } */
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+            user-select: none;
+        }
+
+        img#copy {
+            margin-left: 2rem;
+            vertical-align: 100%;
+            transform: scale(3);
+            opacity: 0;
+            transition: 100ms opacity linear;
+        }
+
+        #obsah:hover img#copy {
+            opacity: 0.15;
+        }
+
+        #obsah:active img#copy {
+            opacity: 0.000001;
+        }
+
+        img#copy:hover {
+            opacity: 0.3 !important;
+            transition: 50ms opacity linear, 50ms filter linear;
+        }
+
+        img#copy:active {
+            opacity: 0.5 !important;
+            filter: invert(23%) sepia(52%) saturate(4547%) hue-rotate(261deg) brightness(79%) contrast(105%);
+            transform: translateY(1px) scale(3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="obsah">
+        <span id="nadpis" onclick="run()">Zapni si JavaScript debílku</span>
+        <!-- <img id="copy" src="copy.svg" data-clipboard-target="#nadpis"> -->
+    </div>
+
+    <script src="jména.js"></script>
+    <script src="slova.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script> -->
+
+    <script>
+
+        function run() {
+            jméno = vyber(jména)
+            možnosti = []
+            písmeno = jméno.startsWith("Ch") ? "Ch" : jméno[0]
+            slova.forEach(slovo => (slovo.toLowerCase().startsWith(písmeno.toLowerCase())) ? možnosti.push(slovo) : null)
+
+            document.getElementById("nadpis").innerText = velké(vyber(možnosti)) + " " + jméno
+            console.log(jméno, písmeno, možnosti)
+        }
+
+        function vyber(array) { return array[Math.floor(Math.random()*array.length)] || "" }
+        function velké(text) { return text[0].toUpperCase() + text.slice(1) }
+        
+        /* new ClipboardJS("img#copy"); */
+        
+        run()
+
+    </script>
+
+</body>
+</html>
