@@ -21,6 +21,24 @@
 			transition: fill .15s ease-in-out;
 			vertical-align: -15%;
 		}
+		img.materialboxed {
+			width: 200px;
+		}
+		@media screen and (width < 768px) {
+			li.media {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			img.materialboxed, li.media img {
+				max-height: 150px;
+				width: auto;
+				margin: 0px !important;
+			}
+			.media-body, li.media .material-placeholder {
+				width: 100%;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -33,9 +51,9 @@
 		<ul class="list-unstyled">
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/hotstrings.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/hotstrings.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">17. 3. 2020</p>
+					<p class="text-muted float-right"><time datetime="2020-3-17">2020-3-17</time></p>
 					<h5 class="mt-0 mb-1">AHK hotstring converter</h5>
 					<p class="mb-3">Another utility for a very specific purpose &ndash; replicating the behavior of AutoHotkey's Hotstrings. This is one of those times where I spend hours writing code to automatize a task that'd take a few minutes to do manually.</p>
 					<a href="hotstrings/" class="btn btn-sm btn-outline-primary">Open</a>
@@ -49,9 +67,9 @@
 		<ul class="list-unstyled">
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/bs.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/bs.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">26. 11. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-11-26">2019-11-26</time></p>
 					<h5 class="mt-0 mb-1">Google wave graphing</h5>
 					<p class="mb-3">To help my classmates with a homework, I quickly made this thing that generates a link to a Google search. The graph view should show how a triangle or sawtooth wave can be made by combining certain octaves of a sine wave.</p>
 					<a href="bs/" class="btn btn-sm btn-outline-primary disabled" tabindex="-1" aria-disabled="true">English</a>
@@ -60,9 +78,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/enterless.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/enterless.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">21. 8. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-8-21">2019-8-21</time></p>
 					<h5 class="mt-0 mb-1">Enterless</h5>
 					<p class="mb-3">A tiny utility that converts newlines to <code>\n</code>.</p>
 					<a href="enterless/" class="btn btn-sm btn-outline-primary">Open</a>
@@ -70,9 +88,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/launchpad.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/launchpad.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">17. 8. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-8-17">2019-8-17</time></p>
 					<h5 class="mt-0 mb-1">Launchpad animations</h5>
 					<p class="mb-3">Lights up buttons on your launchpad using <a href="https://github.com/LostInBrittany/launchpad-webmidi">Launchpad WebMIDI</a>! It can display a variety of patterns on the launchpad's 9×9 16 color display, including a customizable analog clock. I'm very proud of this one!</p><p>Compatible with Chrome + Novation Launchpad Mini MK1. Please plug it in before opening the webpage.</p>
 					<a href="launchpad/" class="btn btn-sm btn-outline-primary">Open</a>
@@ -82,11 +100,11 @@
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
 				<div class="d-flex flex-column">
-					<img src="images/smm1.png" class="mr-3 border materialboxed mb-1" width=200 alt="Webpage screenshot" data-caption="Song selection screen">
-					<img src="images/smm2.png" class="mr-3 border materialboxed mt-1" width=200 alt="Webpage screenshot" data-caption="Mixing deck">
+					<img src="images/smm1.png" class="mr-3 border materialboxed mb-1" alt="Webpage screenshot" data-caption="Song selection screen">
+					<img src="images/smm2.png" class="mr-3 border materialboxed mt-1" alt="Webpage screenshot" data-caption="Mixing deck">
 				</div>
 				<div class="media-body h-100">
-					<p class="text-muted float-right">16. 7. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-7-16">2019-7-16</time></p>
 					<h5 class="mt-0 mb-1">Super Mario Mixer</h5>
 					<p class="mb-3"><em>Work in progress.</em> You can make your own arrangements of the level editor music from Super Mario Maker in this mixing deck webapp! There are 7 mixer tracks for each combination of the 4 games and 6 themes.</p><p>The webapp uses a fork of <a href="https://github.com/patrick99e99/howler.js/tree/loop_control">howler.js</a>, <a href="https://github.com/Dlom/favicon.js">favicon.js</a> and <a href="https://materializecss.com/">Materialize</a>. The playback, mixing and panning already works, but I don't have the loop points yet and I have to finish drawing the instrument icons. Also, I'm not sure where to host the music…</p>
 					<a href="enterless/" class="btn btn-sm btn-outline-primary disabled" tabindex="-1" aria-disabled="true">Coming soon</a>
@@ -94,9 +112,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/sliderwave.gif" class="mr-3 border" width=200 alt="Animation of sliders making a sine wave">
+				<img src="images/sliderwave.gif" class="mr-3 border" alt="Animation of sliders making a sine wave">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">27. 6. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-6-27">2019-6-27</time></p>
 					<h5 class="mt-0 mb-1">Slider wave</h5>
 					<p class="mb-3">A little web toy that makes input sliders move together in a sine wave like fashion, complete with some customization!</p>
 					<a href="sliderwave/" class="btn btn-sm btn-outline-primary">English</a>
@@ -105,9 +123,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/e12.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/e12.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">20. 6. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-6-20">2019-6-20</time></p>
 					<h5 class="mt-0 mb-1">Preffered numbers</h5>
 					<div class="mb-3">Calculates numbers in an E series of any length (like E12 or E24).<br>
 					<small class="text-muted">Some of the calculated values don't match with the official ones which were already being manufactured before the standards were established.</small></div>
@@ -117,9 +135,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/time.png" class="mr-3 border" width=200 alt="18:37:01">
+				<img src="images/time.png" class="mr-3 border" alt="18:37:01">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">22. 3. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-3-22">2019-3-22</time></p>
 					<h5 class="mt-0 mb-1">Time</h5>
 					<p class="mb-3">Just a digital clock, that's it! Frustrated with trying to clean up <a href="https://time.is/just/">time.is/just</a> in OBS, I wrote my own.</p>
 					<a href="time/" class="btn btn-sm btn-outline-primary">Open</a>
@@ -127,9 +145,9 @@
 			</li>
 			
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/mello.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/mello.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">13. 2. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-2-13">2019-2-13</time></p>
 					<h5 class="mt-0 mb-1">Cookie clicker</h5>
 					<p class="mb-3">A simple (and very unbalanced) cookie clicker clone that I wrote for a buddy to teach them some JavaScript basics! Actually, it looks pretty similar to Candy box.</p>
 					<a href="mello/" class="btn btn-sm btn-outline-primary">Open</a>
@@ -137,9 +155,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/minesweeper2.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/minesweeper2.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">4. 2. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-2-4">2019-2-4</time></p>
 					<h5 class="mt-0 mb-1">Minesweeper field</h5>
 					<p>A rushed tool to generate a playfield for the game of minesweeper in form of emojis!</p>
 					<p>Copy the output to Discord to play.</p>
@@ -149,9 +167,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/numbers.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/numbers.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">12. 1. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-1-12">2019-1-12</time></p>
 					<h5 class="mt-0 mb-1">Look-and-say</h5>
 					<p class="mb-3"><em>Unfinished</em> sequence generator. I'll fix it later…</p>
 					<a href="numbers/numbers.html" class="btn btn-sm btn-outline-secondary">Open</a>
@@ -159,9 +177,9 @@
 			</li>
 
 			<li class="media p-2 border-bottom rounded bg-light mb-4 shadow-sm">
-				<img src="images/canvas.png" class="mr-3 border materialboxed" width=200 alt="Webpage screenshot">
+				<img src="images/canvas.png" class="mr-3 border materialboxed" alt="Webpage screenshot">
 				<div class="media-body h-100">
-					<p class="text-muted float-right">5. 1. 2019</p>
+					<p class="text-muted float-right"><time datetime="2019-1-5">2019-1-5</time></p>
 					<h5 class="mt-0 mb-1">Canvas test!</h5>
 					<p class="mb-3">Trying out canvas functions! No framework.</p>
 					<a href="canvas/canvas.html" class="btn btn-sm btn-outline-primary">Open</a>
@@ -240,6 +258,8 @@
 			anchors.add('h4');
 			anchors.add('h5');
 			M.AutoInit();
+			const intl = new Intl.datetimeFormat()
+			document.querySelectorAll("time").forEach(el => el.innerText = intl.format(new Date(el.datetime)) )
 		});
 	</script>
 </body>
