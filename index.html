@@ -258,8 +258,8 @@
 			anchors.add('h4');
 			anchors.add('h5');
 			M.AutoInit();
-			const intl = new Intl.datetimeFormat()
-			document.querySelectorAll("time").forEach(el => el.innerText = intl.format(new Date(el.datetime)) )
+			const intl = new Intl.DateTimeFormat()
+			document.querySelectorAll("time").forEach(el => el.innerText = intl.format(new Date(el.dateTime)) )
 		});
 	</script>
 </body>
